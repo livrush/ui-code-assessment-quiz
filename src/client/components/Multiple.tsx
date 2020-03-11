@@ -14,7 +14,7 @@ export const Multiple = ({ content, handleNext }: {
       <h2>{content.question}</h2>
       {
         answers.map((answer, index) => (
-          <div className="check" key={answer.slice(0, 5)}>
+          <div className="check" key={answer}>
             <input
               id={`answer-${index}`}
               type="radio"
