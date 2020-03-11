@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { buttonStyle } from '../style';
 
-export const Summary = ({ correct, wrong }: {
-  correct: number, wrong: number,
+export const Summary = ({ correct, wrong, handleRestart }: {
+  correct: number, wrong: number, handleRestart: (() => void)
 }) => {
   const answered: number = correct + wrong;
   const score: number = Math.round(correct / answered * 100) || 0;
@@ -14,7 +14,7 @@ export const Summary = ({ correct, wrong }: {
       <p>Wrong: <span style={{fontWeight: 'bold'}}>{wrong}</span></p>
       <p>Questions answered: <span style={{fontWeight: 'bold'}}>{answered}</span></p>
       <p>Final Score: <span style={{fontWeight: 'bold'}}>{score}%</span></p>
-      <button style={buttonStyle}>Restart Quiz</button>
+      <button onClick={handleRestart} style={buttonStyle}>Restart Quiz</button>
     </div>
   );
 };

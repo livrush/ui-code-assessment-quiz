@@ -89,7 +89,8 @@ class App extends React.Component<{}, TAppState> {
     }
 
     render() {
-        const { correct, questions, wrong, currentQuestion } = this.state;
+        const { correct, wrong, currentQuestion } = this.state;
+        const { handleQuestionSubmit, handleQuizRestart } = this;
         return (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', fontFamily: 'helvetica, sans-serif' }}>
                 <h1>Lucid Quiz</h1>
@@ -98,11 +99,12 @@ class App extends React.Component<{}, TAppState> {
                     currentQuestion.question ?
                     (
                         <Question
-                            handleNext={this.handleQuestionSubmit}
+                            handleNext={handleQuestionSubmit}
                             content={currentQuestion}
                         />
                     ) : (
                         <Summary
+                            handleRestart={handleQuizRestart}
                             correct={correct}
                             wrong={wrong}
                         />
