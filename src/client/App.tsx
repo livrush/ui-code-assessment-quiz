@@ -2,17 +2,17 @@ import * as React from 'react';
 import { Question } from './components/Question';
 
 export type TQuestion = {
-    category: String;
-    type: String;
-    difficulty: String;
-    question: String;
-    correct_answer: String;
-    incorrect_answers:[String];
+    category: string;
+    type: string;
+    difficulty: string;
+    question: string;
+    correct_answer: string;
+    incorrect_answers:string[];
 }
 
 type AppState = {
-    correct: Number;
-    wrong: Number;
+    correct: number;
+    wrong: number;
     questions: TQuestion[];
 }
 
