@@ -82,6 +82,7 @@ class App extends React.Component<{}, TAppState> {
         this.setState({
             questions: completedQuestions as TQuestion[],
             currentQuestion: currentQuestion,
+            completedQuestions: [],
             correct: 0,
             wrong: 0,
         });
