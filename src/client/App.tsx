@@ -19,6 +19,7 @@ class App extends React.Component<{}, TAppState> {
                 }
             ],
         };
+        this.handleQuestionSubmit = this.handleQuestionSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -32,14 +33,24 @@ class App extends React.Component<{}, TAppState> {
             });
     }
 
+    handleQuestionSubmit(answer: string, correctAnswer: string) {
+        const { correct, wrong } = this.state;
+        if (answer === correctAnswer) {
+            this.setState({ correct: correct + 1 });
+        } else {
+            this.setState({ wrong: wrong + 1 });
+        }
+    }
+
     render() {
-        const { questions } = this.state;
+        const { correct, questions, wrong } = this.state;
         const currentQuestion: TQuestion = questions[0];
         return (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <h1>Lucid Quiz</h1>
                 <h2>Try your best to answer these questions.</h2>
                 <Question
+                    handleNext={this.handleQuestionSubmit}
                     content={currentQuestion}
                 />
             </div>
