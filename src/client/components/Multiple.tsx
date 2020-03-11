@@ -1,7 +1,10 @@
 import * as React from 'react';
-import { TQuestion } from '../types';
+import { THandleQuestionSubmit, TQuestion } from '../types';
 
-export const Multiple = ({ content }: { content: TQuestion }) => {
+export const Multiple = ({ content, handleNext }: {
+  content: TQuestion,
+  handleNext: THandleQuestionSubmit,
+}) => {
   const answers: string[] = [content.correct_answer].concat(content.incorrect_answers);
   const [selectedAnswer, updateSelectedAnswer] = React.useState('');
 
@@ -22,7 +25,7 @@ export const Multiple = ({ content }: { content: TQuestion }) => {
           </div>
         ))
       }
-      <button>Next</button>
+      <button onClick={() => handleNext(selectedAnswer, content.correct_answer)}>Next</button>
     </div>
   );
 }

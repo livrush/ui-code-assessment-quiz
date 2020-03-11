@@ -1,20 +1,21 @@
 import * as React from 'react';
-import { TQuestion } from '../types';
+import { THandleQuestionSubmit, TQuestion } from '../types';
 import { Multiple } from './Multiple';
 
-export const Question = ({ content }: {
+export const Question = ({ content, handleNext }: {
   content: TQuestion,
+  handleNext: THandleQuestionSubmit,
 }) => {
   let questionComponent = null;
   switch(content.type) {
     case 'multiple':
-      questionComponent = (<Multiple content={content} />);
+      questionComponent = (<Multiple content={content} handleNext={handleNext} />);
       break;
     case 'boolean':
-      questionComponent = (<Multiple content={content} />);
+      questionComponent = (<Multiple content={content} handleNext={handleNext} />);
       break;
     case 'text':
-      questionComponent = (<Multiple content={content} />);
+      questionComponent = (<Multiple content={content} handleNext={handleNext} />);
       break;
     default:
       questionComponent = null;
