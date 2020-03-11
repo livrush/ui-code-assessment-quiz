@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { THandleQuestionSubmit, TQuestion } from '../types';
-import { answerContainerStyle, buttonStyle, inputStyle } from '../style';
+import {
+  answerContainerStyle,
+  buttonStyle,
+  h2Style,
+  inputStyle
+} from '../style';
 
 export const Text = ({ content, handleNext }: {
   content: TQuestion,
@@ -11,7 +16,7 @@ export const Text = ({ content, handleNext }: {
 
   return (
     <div className="question-text">
-      <h2 dangerouslySetInnerHTML={{ __html: content.question }}></h2>
+      <h2 style={h2Style} dangerouslySetInnerHTML={{ __html: content.question }}></h2>
       <div className="text-answer-container" style={answerContainerStyle}>
         <input className="text-answer-input" style={inputStyle} type="text" name="" />
       </div>

@@ -8,6 +8,10 @@ export const buttonStyle: CSS.Properties = {
   padding: '.5rem 1rem',
 };
 
+export const h2Style: CSS.Properties = {
+  fontWeight: 400,
+}
+
 export const answerContainerStyle: CSS.Properties = {
   margin: '2rem 0',
 };

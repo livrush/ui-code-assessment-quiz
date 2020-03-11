@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { THandleQuestionSubmit, TQuestion } from '../types';
-import { buttonStyle, answerContainerStyle, multipleAnswerStyle, radioStyle } from '../style';
+import {
+  answerContainerStyle,
+  buttonStyle,
+  h2Style,
+  multipleAnswerStyle,
+  radioStyle
+} from '../style';
 
 export const Multiple = ({ content, handleNext }: {
   content: TQuestion,
@@ -11,7 +17,7 @@ export const Multiple = ({ content, handleNext }: {
 
   return (
     <div className="question-multiple">
-      <h2 dangerouslySetInnerHTML={{ __html: content.question }}></h2>
+      <h2 style={h2Style} dangerouslySetInnerHTML={{ __html: content.question }}></h2>
       <div className="multiple-answer-container" style={answerContainerStyle}>
         {
           answers.map((answer) => (
