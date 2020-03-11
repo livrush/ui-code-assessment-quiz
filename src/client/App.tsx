@@ -48,12 +48,12 @@ class App extends React.Component<{}, AppState> {
 
     render() {
         const { questions } = this.state;
-        const question: TQuestion = questions[0];
+        const currentQuestion: TQuestion = questions[0];
         return (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <h1>Lucid Quiz</h1>
                 <h2>Try your best to answer these questions.</h2>
-                <Question content={question} />
+                <Question content={currentQuestion} />
             </div>
         )
     }
