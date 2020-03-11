@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { THandleQuestionSubmit, TQuestion } from '../types';
 import { Multiple } from './Multiple';
+import { Text } from './Text';
 
 export const Question = ({ content, handleNext }: {
   content: TQuestion,
@@ -15,7 +16,7 @@ export const Question = ({ content, handleNext }: {
       questionComponent = (<Multiple content={content} handleNext={handleNext} />);
       break;
     case 'text':
-      questionComponent = (<Multiple content={content} handleNext={handleNext} />);
+      questionComponent = (<Text content={content} handleNext={handleNext} />);
       break;
     default:
       questionComponent = null;
