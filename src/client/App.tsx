@@ -19,7 +19,17 @@ class App extends React.Component<{}, TAppState> {
                     incorrect_answers: [''],
                 }
             ],
+            currentQuestion: {
+                category: '',
+                type: '',
+                difficulty: '',
+                question: '',
+                correct_answer: '',
+                incorrect_answers: [''],
+            },
+            completedQuestions: [],
         };
+        this.handleQuestionChange = this.handleQuestionChange.bind(this);
         this.handleQuestionSubmit = this.handleQuestionSubmit.bind(this);
     }
 
@@ -28,10 +38,28 @@ class App extends React.Component<{}, TAppState> {
         fetch('http://localhost:4000/api/questions')
             .then(res => res.json())
             .then (({results}) => {
+                const randomQuestionIndex = Math.floor(Math.random() * results.length);
+                const currentQuestion: TQuestion = results.splice(randomQuestionIndex, 1)[0];
                 context.setState({
                     questions: results,
+                    currentQuestion,
                 });
             });
+    }
+
+    handleQuestionChange() {
+        const {
+            questions,
+            currentQuestion,
+            completedQuestions,
+        } = this.state;
+        const randomQuestionIndex = Math.floor(Math.random() * questions.length);
+        const newQuestion: TQuestion = questions.splice(randomQuestionIndex, 1)[0];
+        this.setState({
+            questions,
+            currentQuestion: newQuestion,
+            completedQuestions: completedQuestions.concat(currentQuestion),
+        });
     }
 
     handleQuestionSubmit(answer: string, correctAnswer: string) {
@@ -41,11 +69,11 @@ class App extends React.Component<{}, TAppState> {
         } else {
             this.setState({ wrong: wrong + 1 });
         }
+        this.handleQuestionChange();
     }
 
     render() {
-        const { correct, questions, wrong } = this.state;
-        const currentQuestion: TQuestion = questions[0];
+        const { correct, questions, wrong, currentQuestion } = this.state;
         return (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', fontFamily: 'helvetica, sans-serif' }}>
                 <h1>Lucid Quiz</h1>

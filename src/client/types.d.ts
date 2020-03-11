@@ -11,6 +11,8 @@ export type TAppState = {
   correct: number;
   wrong: number;
   questions: TQuestion[];
+  currentQuestion: TQuestion;
+  completedQuestions: Array<TQuestion?>;
 }
 
 export type THandleQuestionSubmit = ((answer: string, correctAnswer: string) => void)
