@@ -10,10 +10,10 @@ type Question = {
 }
 
 type AppState = {
-    questions: [Question];
+    questions: [Question?];
 }
 
-class App extends React.Component<{}> {
+class App extends React.Component<{}, AppState> {
     constructor(props: {}) {
         super(props);
         this.state = {
