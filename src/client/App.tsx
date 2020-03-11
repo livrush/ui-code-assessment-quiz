@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { Question } from './components/Question';
 
-type Question = {
+export type TQuestion = {
     category: String;
     type: String;
     difficulty: String;
@@ -12,7 +13,7 @@ type Question = {
 type AppState = {
     correct: Number;
     wrong: Number;
-    questions: [Question?];
+    questions: [TQuestion];
 }
 
 class App extends React.Component<{}, AppState> {
@@ -21,7 +22,16 @@ class App extends React.Component<{}, AppState> {
         this.state = {
             correct: 0,
             wrong: 0,
-            questions: [],
+            questions: [
+                {
+                    category: '',
+                    type: '',
+                    difficulty: '',
+                    question: '',
+                    correct_answer: '',
+                    incorrect_answers: [''],
+                }
+            ],
         };
     }
 
@@ -37,10 +47,13 @@ class App extends React.Component<{}, AppState> {
     }
 
     render() {
+        const { questions } = this.state;
+        const question: TQuestion = questions[0];
         return (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <h1>Lucid Quiz</h1>
                 <h2>Try your best to answer these questions.</h2>
+                <Question content={question} />
             </div>
         )
     }
