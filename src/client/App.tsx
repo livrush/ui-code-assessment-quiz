@@ -10,6 +10,8 @@ type Question = {
 }
 
 type AppState = {
+    correct: Number;
+    wrong: Number;
     questions: [Question?];
 }
 
@@ -17,6 +19,8 @@ class App extends React.Component<{}, AppState> {
     constructor(props: {}) {
         super(props);
         this.state = {
+            correct: 0,
+            wrong: 0,
             questions: [],
         };
     }
