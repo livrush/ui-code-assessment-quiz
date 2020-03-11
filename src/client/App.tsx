@@ -24,6 +24,7 @@ class App extends React.Component<{}, TAppState> {
         };
         this.handleQuestionChange = this.handleQuestionChange.bind(this);
         this.handleQuestionSubmit = this.handleQuestionSubmit.bind(this);
+        this.handleQuizRestart = this.handleQuizRestart.bind(this);
     }
 
     componentDidMount() {
@@ -70,6 +71,20 @@ class App extends React.Component<{}, TAppState> {
             this.setState({ wrong: wrong + 1 });
         }
         this.handleQuestionChange();
+    }
+
+    handleQuizRestart() {
+        const {
+            completedQuestions,
+        } = this.state;
+        const randomQuestionIndex = Math.floor(Math.random() * completedQuestions.length);
+        const currentQuestion: TQuestion = completedQuestions.splice(randomQuestionIndex, 1)[0] as TQuestion;
+        this.setState({
+            questions: completedQuestions as TQuestion[],
+            currentQuestion: currentQuestion,
+            correct: 0,
+            wrong: 0,
+        });
     }
 
     render() {
