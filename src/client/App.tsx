@@ -17,16 +17,15 @@ class App extends React.Component<{}, TAppState> {
                     question: '',
                     correct_answer: '',
                     incorrect_answers: [''],
-                }
-            ],
-            currentQuestion: {
-                category: '',
-                type: '',
-                difficulty: '',
-                question: '',
-                correct_answer: '',
-                incorrect_answers: [''],
-            },
+
+class App extends React.Component<{}, TAppState> {
+    constructor(props: {}) {
+        super(props);
+        this.state = {
+            correct: 0,
+            wrong: 0,
+            questions: [emptyQuestion],
+            currentQuestion: emptyQuestion,
             completedQuestions: [],
         };
         this.handleQuestionChange = this.handleQuestionChange.bind(this);
@@ -53,13 +52,20 @@ class App extends React.Component<{}, TAppState> {
             currentQuestion,
             completedQuestions,
         } = this.state;
-        const randomQuestionIndex = Math.floor(Math.random() * questions.length);
-        const newQuestion: TQuestion = questions.splice(randomQuestionIndex, 1)[0];
-        this.setState({
-            questions,
-            currentQuestion: newQuestion,
-            completedQuestions: completedQuestions.concat(currentQuestion),
-        });
+        if (questions.length) {
+            const randomQuestionIndex = Math.floor(Math.random() * questions.length);
+            const newQuestion: TQuestion = questions.splice(randomQuestionIndex, 1)[0];
+            this.setState({
+                questions,
+                currentQuestion: newQuestion,
+                completedQuestions: completedQuestions.concat(currentQuestion),
+            });
+        } else {
+            this.setState({
+                currentQuestion: emptyQuestion,
+                completedQuestions: completedQuestions.concat(currentQuestion),
+            });
+        }
     }
 
     handleQuestionSubmit(answer: string, correctAnswer: string) {
