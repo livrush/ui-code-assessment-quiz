@@ -8,3 +8,6 @@ export const buttonStyle: CSS.Properties = {
   fontSize: '1rem',
 };
 
+export const radioStyle: CSS.Properties = {
+  margin: '0.5rem',
+};
