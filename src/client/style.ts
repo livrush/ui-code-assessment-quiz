@@ -29,3 +29,14 @@ export const inputStyle: CSS.Properties = {
   margin: 0,
   padding: '0.5rem',
 };
+
+export const summaryStatContainer: CSS.Properties = answerContainerStyle;
+
+export const summaryStat: CSS.Properties = {
+  marginBlockEnd: '0.5rem',
+  marginBlockStart: '0.5rem',
+};
+
+export const summaryStatSpan: CSS.Properties = {
+  fontWeight: 'bold',
+};

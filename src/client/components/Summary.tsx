@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { buttonStyle } from '../style';
+import {
+  buttonStyle,
+  summaryStat,
+  summaryStatContainer,
+  summaryStatSpan,
+} from '../style';
 
 export const Summary = ({ correct, wrong, handleRestart }: {
   correct: number, wrong: number, handleRestart: (() => void)
@@ -10,10 +15,20 @@ export const Summary = ({ correct, wrong, handleRestart }: {
   return (
     <div className="summary">
       <h1>SUMMARY</h1>
-      <p>Correct: <span style={{fontWeight: 'bold'}}>{correct}</span></p>
-      <p>Wrong: <span style={{fontWeight: 'bold'}}>{wrong}</span></p>
-      <p>Questions answered: <span style={{fontWeight: 'bold'}}>{answered}</span></p>
-      <p>Final Score: <span style={{fontWeight: 'bold'}}>{score}%</span></p>
+      <div className="summary-stat-container" style={summaryStatContainer}>
+        <p className="summary-stat" style={summaryStat}>
+          Correct: <span style={summaryStatSpan}>{correct}</span>
+        </p>
+        <p className="summary-stat" style={summaryStat}>
+          Wrong: <span style={summaryStatSpan}>{wrong}</span>
+        </p>
+        <p className="summary-stat" style={summaryStat}>
+          Questions answered: <span style={summaryStatSpan}>{answered}</span>
+        </p>
+        <p className="summary-stat" style={summaryStat}>
+          Final Score: <span style={summaryStatSpan}>{score}%</span>
+        </p>
+      </div>
       <button onClick={handleRestart} style={buttonStyle}>Restart Quiz</button>
     </div>
   );
