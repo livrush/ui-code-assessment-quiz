@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { THandleQuestionSubmit, TQuestion } from '../types';
+import { buttonStyle } from '../style';
 
 export const Multiple = ({ content, handleNext }: {
   content: TQuestion,
@@ -25,7 +26,7 @@ export const Multiple = ({ content, handleNext }: {
           </div>
         ))
       }
-      <button onClick={() => handleNext(selectedAnswer, content.correct_answer)}>Next</button>
+      <button style={buttonStyle} onClick={() => handleNext(selectedAnswer, content.correct_answer)}>Next</button>
     </div>
   );
 }
