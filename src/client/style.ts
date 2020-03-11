@@ -8,6 +8,16 @@ export const buttonStyle: CSS.Properties = {
   fontSize: '1rem',
 };
 
+export const multipleAnswerContainerStyle: CSS.Properties = {
+  margin: '2rem 0',
+};
+
+export const multipleAnswerStyle: CSS.Properties = {
+  display: 'flex',
+  padding: '0.5rem 0',
+};
+
 export const radioStyle: CSS.Properties = {
-  margin: '0.5rem',
+  margin: 0,
+  marginRight: '0.75rem',
 };

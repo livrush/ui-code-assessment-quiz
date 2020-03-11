@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { THandleQuestionSubmit, TQuestion } from '../types';
-import { buttonStyle } from '../style';
+import { buttonStyle, multipleAnswerContainerStyle, multipleAnswerStyle, radioStyle } from '../style';
 
 export const Multiple = ({ content, handleNext }: {
   content: TQuestion,
@@ -11,21 +11,24 @@ export const Multiple = ({ content, handleNext }: {
 
   return (
     <div className="question-multiple">
-      <h2>{content.question}</h2>
-      {
-        answers.map((answer, index) => (
-          <div className="check" key={answer}>
-            <input
-              id={`answer-${index}`}
-              type="radio"
-              value={answer}
-              checked={answer === selectedAnswer}
-              onChange={() => updateSelectedAnswer(answer)}
-            />
-            <label htmlFor={`answer-${index}`}>{answer}</label>
-          </div>
-        ))
-      }
+      <h2 dangerouslySetInnerHTML={{ __html: content.question }}></h2>
+      <div className="multiple-answer-container" style={multipleAnswerContainerStyle}>
+        {
+          answers.map((answer) => (
+            <div className="multiple-answer" style={multipleAnswerStyle} key={answer}>
+              <input
+                checked={answer === selectedAnswer}
+                name={answer}
+                onChange={() => updateSelectedAnswer(answer)}
+                type="radio"
+                style={radioStyle}
+                value={answer}
+              />
+              <label htmlFor={answer} dangerouslySetInnerHTML={{__html: answer}}></label>
+            </div>
+          ))
+        }
+      </div>
       <button style={buttonStyle} onClick={() => handleNext(selectedAnswer, content.correct_answer)}>Next</button>
     </div>
   );
