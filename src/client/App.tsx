@@ -13,7 +13,7 @@ export type TQuestion = {
 type AppState = {
     correct: Number;
     wrong: Number;
-    questions: [TQuestion];
+    questions: TQuestion[];
 }
 
 class App extends React.Component<{}, AppState> {
