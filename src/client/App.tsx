@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Question } from './components/Question';
+import { Summary } from './components/Summary';
 import { TAppState, TQuestion } from './types';
 
 class App extends React.Component<{}, TAppState> {
@@ -46,15 +47,19 @@ class App extends React.Component<{}, TAppState> {
         const { correct, questions, wrong } = this.state;
         const currentQuestion: TQuestion = questions[0];
         return (
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', fontFamily: 'helvetica, sans-serif' }}>
                 <h1>Lucid Quiz</h1>
                 <h2>Try your best to answer these questions.</h2>
+                <Summary
+                    correct={correct}
+                    wrong={wrong}
+                />
                 <Question
                     handleNext={this.handleQuestionSubmit}
                     content={currentQuestion}
                 />
             </div>
-        )
+        );
     }
 }
 
