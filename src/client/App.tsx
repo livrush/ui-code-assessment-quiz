@@ -1,22 +1,8 @@
 import * as React from 'react';
 import { Question } from './components/Question';
+import { TAppState, TQuestion } from './types';
 
-export type TQuestion = {
-    category: string;
-    type: string;
-    difficulty: string;
-    question: string;
-    correct_answer: string;
-    incorrect_answers:string[];
-}
-
-type AppState = {
-    correct: number;
-    wrong: number;
-    questions: TQuestion[];
-}
-
-class App extends React.Component<{}, AppState> {
+class App extends React.Component<{}, TAppState> {
     constructor(props: {}) {
         super(props);
         this.state = {
@@ -53,7 +39,9 @@ class App extends React.Component<{}, AppState> {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <h1>Lucid Quiz</h1>
                 <h2>Try your best to answer these questions.</h2>
-                <Question content={currentQuestion} />
+                <Question
+                    content={currentQuestion}
+                />
             </div>
         )
     }

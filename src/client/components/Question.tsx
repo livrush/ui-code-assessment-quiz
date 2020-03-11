@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { TQuestion } from '../App';
+import { TQuestion } from '../types';
 import { Multiple } from './Multiple';
 
-export const Question = ({ content }: { content: TQuestion }) => {
+export const Question = ({ content }: {
+  content: TQuestion,
+}) => {
   let questionComponent = null;
   switch(content.type) {
     case 'multiple':
@@ -17,6 +19,7 @@ export const Question = ({ content }: { content: TQuestion }) => {
     default:
       questionComponent = null;
   }
+
   return (
     <div className="question">
       {questionComponent}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TQuestion } from '../App';
+import { TQuestion } from '../types';
 
 export const Multiple = ({ content }: { content: TQuestion }) => {
   const answers: string[] = [content.correct_answer].concat(content.incorrect_answers);
