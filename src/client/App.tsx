@@ -3,20 +3,14 @@ import { Question } from './components/Question';
 import { Summary } from './components/Summary';
 import { TAppState, TQuestion } from './types';
 
-class App extends React.Component<{}, TAppState> {
-    constructor(props: {}) {
-        super(props);
-        this.state = {
-            correct: 0,
-            wrong: 0,
-            questions: [
-                {
-                    category: '',
-                    type: '',
-                    difficulty: '',
-                    question: '',
-                    correct_answer: '',
-                    incorrect_answers: [''],
+const emptyQuestion = {
+    category: '',
+    type: '',
+    difficulty: '',
+    question: '',
+    correct_answer: '',
+    incorrect_answers: [''],
+}
 
 class App extends React.Component<{}, TAppState> {
     constructor(props: {}) {
