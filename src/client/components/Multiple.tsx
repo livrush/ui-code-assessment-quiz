@@ -35,7 +35,15 @@ export const Multiple = ({ content, handleNext }: {
           ))
         }
       </div>
-      <button style={buttonStyle} onClick={() => handleNext(selectedAnswer, content.correct_answer)}>Next</button>
+      <button
+        style={buttonStyle}
+        onClick={() => {
+          handleNext(selectedAnswer, content.correct_answer);
+          updateSelectedAnswer('');
+        }}
+      >
+        Next
+      </button>
     </div>
   );
 }
