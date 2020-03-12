@@ -8,7 +8,8 @@ export const buttonStyle: CSS.Properties = {
   padding: '.5rem 1rem',
 };
 
-export const h2Style: CSS.Properties = {
+export const h1Style: CSS.Properties = {
+  fontSize: '1.25rem',
   fontWeight: 400,
 }
 
