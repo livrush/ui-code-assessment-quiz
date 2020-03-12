@@ -3,7 +3,7 @@ import { THandleQuestionSubmit, TQuestion } from '../types';
 import {
   answerContainerStyle,
   buttonStyle,
-  h2Style,
+  h1Style,
   multipleAnswerStyle,
   radioStyle
 } from '../style';
@@ -17,7 +17,7 @@ export const Multiple = ({ content, handleNext }: {
 
   return (
     <div className="question-multiple">
-      <h2 style={h2Style} dangerouslySetInnerHTML={{ __html: content.question }}></h2>
+      <h1 style={h1Style} dangerouslySetInnerHTML={{ __html: content.question }}></h1>
       <div className="multiple-answer-container" style={answerContainerStyle}>
         {
           answers.map((answer) => (
@@ -26,8 +26,8 @@ export const Multiple = ({ content, handleNext }: {
                 checked={answer === selectedAnswer}
                 name={answer}
                 onChange={() => updateSelectedAnswer(answer)}
-                type="radio"
                 style={radioStyle}
+                type="radio"
                 value={answer}
               />
               <label htmlFor={answer} dangerouslySetInnerHTML={{__html: answer}}></label>
