@@ -11,7 +11,6 @@ export const Text = ({ content, handleNext }: {
   content: TQuestion,
   handleNext: THandleQuestionSubmit,
 }) => {
-  const answers: string[] = [content.correct_answer].concat(content.incorrect_answers);
   const [selectedAnswer, updateSelectedAnswer] = React.useState('');
 
   return (
