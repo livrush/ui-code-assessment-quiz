@@ -31,5 +31,5 @@ export const Question = ({ content, handleNext }: {
     <div className="question">
       {questionComponent}
     </div>
-  )}
-;
+  );
+};
