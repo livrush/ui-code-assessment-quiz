@@ -2,6 +2,11 @@ import * as React from 'react';
 import { THandleQuestionSubmit, TQuestion } from '../types';
 import { Multiple } from './Multiple';
 import { Text } from './Text';
+import {
+  normalizeBooleanQuestion,
+  normalizeMultipleQuestion,
+  normalizeTextQuestion,
+} from '../../utils';
 
 export const Question = ({ content, handleNext }: {
   content: TQuestion,
@@ -10,10 +15,10 @@ export const Question = ({ content, handleNext }: {
   let questionComponent = null;
   switch(content.type) {
     case 'multiple':
-      questionComponent = (<Multiple content={content} handleNext={handleNext} />);
+      questionComponent = (<Multiple {...normalizeMultipleQuestion(content)} handleNext={handleNext} />);
       break;
     case 'boolean':
-      questionComponent = (<Multiple content={content} handleNext={handleNext} />);
+      questionComponent = (<Multiple {...normalizeBooleanQuestion(content)} handleNext={handleNext} />);
       break;
     case 'text':
       questionComponent = (<Text content={content} handleNext={handleNext} />);

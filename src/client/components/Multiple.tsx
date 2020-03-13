@@ -8,16 +8,17 @@ import {
   radioStyle
 } from '../style';
 
-export const Multiple = ({ content, handleNext }: {
-  content: TQuestion,
+export const Multiple = ({ question, answers, correct_answer, handleNext }: {
+  question: string,
+  answers: string[],
+  correct_answer: string,
   handleNext: THandleQuestionSubmit,
 }) => {
-  const answers: string[] = [content.correct_answer].concat(content.incorrect_answers);
   const [selectedAnswer, updateSelectedAnswer] = React.useState('');
 
   return (
     <div className="question-multiple">
-      <h1 style={h1Style} dangerouslySetInnerHTML={{ __html: content.question }}></h1>
+      <h1 style={h1Style} dangerouslySetInnerHTML={{ __html: question }}></h1>
       <div className="multiple-answer-container" style={answerContainerStyle}>
         {
           answers.map((answer) => (
@@ -38,7 +39,7 @@ export const Multiple = ({ content, handleNext }: {
       <button
         style={buttonStyle}
         onClick={() => {
-          handleNext(selectedAnswer, content.correct_answer);
+          handleNext(selectedAnswer, correct_answer);
           updateSelectedAnswer('');
         }}
       >
