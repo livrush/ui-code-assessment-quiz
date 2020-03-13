@@ -21,7 +21,7 @@ export const Question = ({ content, handleNext }: {
       questionComponent = (<Multiple {...normalizeBooleanQuestion(content)} handleNext={handleNext} />);
       break;
     case 'text':
-      questionComponent = (<Text content={content} handleNext={handleNext} />);
+      questionComponent = (<Text {...normalizeTextQuestion(content)} handleNext={handleNext} />);
       break;
     default:
       questionComponent = null;

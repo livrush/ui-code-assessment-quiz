@@ -7,15 +7,16 @@ import {
   inputStyle
 } from '../style';
 
-export const Text = ({ content, handleNext }: {
-  content: TQuestion,
+export const Text = ({ question, correct_answer, handleNext }: {
+  question: string,
+  correct_answer: string,
   handleNext: THandleQuestionSubmit,
 }) => {
   const [selectedAnswer, updateSelectedAnswer] = React.useState('');
 
   return (
     <div className="question-text">
-      <h1 style={h1Style} dangerouslySetInnerHTML={{ __html: content.question }}></h1>
+      <h1 style={h1Style} dangerouslySetInnerHTML={{ __html: question }}></h1>
       <div className="text-answer-container" style={answerContainerStyle}>
         <input
           className="text-answer-input"
@@ -29,7 +30,7 @@ export const Text = ({ content, handleNext }: {
       <button
         style={buttonStyle}
         onClick={() => {
-          handleNext(selectedAnswer, content.correct_answer);
+          handleNext(selectedAnswer, correct_answer);
           updateSelectedAnswer('');
         }}
       >
