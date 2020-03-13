@@ -6,7 +6,7 @@ import {
   normalizeBooleanQuestion,
   normalizeMultipleQuestion,
   normalizeTextQuestion,
-} from '../../utils';
+} from '../utils';
 
 export const Question = ({ content, handleNext }: {
   content: TQuestion,

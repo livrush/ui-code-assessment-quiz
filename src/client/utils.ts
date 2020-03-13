@@ -1,4 +1,4 @@
-import { TQuestion } from './client/types';
+import { TQuestion } from './types';
 
 export const shuffleArray = (arrays: string[]) => {
   const shuffledArray: string[] = arrays.slice(0);
