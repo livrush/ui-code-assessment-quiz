@@ -35,6 +35,10 @@ export const inputStyle: CSS.Properties = {
   padding: '0.5rem',
 };
 
+export const errorMessage: CSS.Properties = {
+  color: '#B00'
+};
+
 export const summaryStatContainer: CSS.Properties = answerContainerStyle;
 
 export const summaryStat: CSS.Properties = {

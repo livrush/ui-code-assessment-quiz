@@ -3,6 +3,7 @@ import { THandleQuestionSubmit, TQuestion } from '../types';
 import {
   answerContainerStyle,
   buttonStyle,
+  errorMessage,
   h1Style,
   multipleAnswerStyle,
   radioStyle
@@ -15,6 +16,7 @@ export const Multiple = ({ question, answers, correct_answer, handleNext }: {
   handleNext: THandleQuestionSubmit,
 }) => {
   const [selectedAnswer, updateSelectedAnswer] = React.useState('');
+  const [showValidationError, updateShowValidationError] = React.useState(false);
 
   return (
     <div className="question-multiple">
@@ -36,11 +38,21 @@ export const Multiple = ({ question, answers, correct_answer, handleNext }: {
           ))
         }
       </div>
+      {
+        showValidationError ?
+          (<p className="error-message" style={errorMessage}>Please select an answer</p>) :
+        null
+      }
       <button
         style={buttonStyle}
         onClick={() => {
-          handleNext(selectedAnswer, correct_answer);
-          updateSelectedAnswer('');
+          if (selectedAnswer) {
+            handleNext(selectedAnswer, correct_answer);
+            updateShowValidationError(false);
+            updateSelectedAnswer('');
+          } else {
+            updateShowValidationError(true);
+          }
         }}
       >
         Next

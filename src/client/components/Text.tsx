@@ -3,6 +3,7 @@ import { THandleQuestionSubmit, TQuestion } from '../types';
 import {
   answerContainerStyle,
   buttonStyle,
+  errorMessage,
   h1Style,
   inputStyle
 } from '../style';
@@ -13,6 +14,7 @@ export const Text = ({ question, correct_answer, handleNext }: {
   handleNext: THandleQuestionSubmit,
 }) => {
   const [selectedAnswer, updateSelectedAnswer] = React.useState('');
+  const [showValidationError, updateShowValidationError] = React.useState(false);
 
   return (
     <div className="question-text">
@@ -27,11 +29,21 @@ export const Text = ({ question, correct_answer, handleNext }: {
           value={selectedAnswer}
         />
       </div>
+      {
+        showValidationError ?
+          (<p className="error-message" style={errorMessage}>Please enter an answer</p>) :
+          null
+      }
       <button
         style={buttonStyle}
         onClick={() => {
-          handleNext(selectedAnswer, correct_answer);
-          updateSelectedAnswer('');
+          if (selectedAnswer) {
+            handleNext(selectedAnswer, correct_answer);
+            updateShowValidationError(false);
+            updateSelectedAnswer('');
+          } else {
+            updateShowValidationError(true);
+          }
         }}
       >
         Next
