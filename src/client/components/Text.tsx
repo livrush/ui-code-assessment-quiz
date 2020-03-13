@@ -20,7 +20,7 @@ export const Text = ({ content, handleNext }: {
         <input
           className="text-answer-input"
           name="text answer"
-          onChange={(e) => {console.log(e.currentTarget.value); updateSelectedAnswer(e.currentTarget.value);}}
+          onChange={(e) => updateSelectedAnswer(e.currentTarget.value)}
           style={inputStyle}
           type="text"
           value={selectedAnswer}
